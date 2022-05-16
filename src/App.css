@@ -1,9 +1,10 @@
 @import url("https://spazeir-ui.netlify.app/CSS/button.css");
 :root {
     /* colors */
-    --primary-color: #ff4c4c;
+    --primary-color: #bb1212;
     --secondary-color: #ffff;
     --gold: #ffd700;
+    --black: #000000;
 }
 
 .App {

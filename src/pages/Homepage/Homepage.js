@@ -1,9 +1,12 @@
 import "./Homepage.css";
+import {Categories} from "./components/Categories";
 
 function Homepage(){
+
     return(
         <div>
-            <h1>Homepage</h1>
+            <Categories />
+            
         </div>
     )
 }
