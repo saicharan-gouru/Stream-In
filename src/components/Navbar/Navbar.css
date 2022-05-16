@@ -1,0 +1,25 @@
+.nav-bar {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--secondary-color);
+}
+
+.title {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-btn {
+    color: var(--gold);
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0px 10px;
+    border: 2px solid var(--secondary-color);
+}

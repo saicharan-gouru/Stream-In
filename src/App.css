@@ -1,0 +1,11 @@
+@import url("https://spazeir-ui.netlify.app/CSS/button.css");
+:root {
+    /* colors */
+    --primary-color: #ff4c4c;
+    --secondary-color: #ffff;
+    --gold: #ffd700;
+}
+
+.App {
+    text-align: center;
+}
