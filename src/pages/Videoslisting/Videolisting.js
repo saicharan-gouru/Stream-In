@@ -18,7 +18,7 @@ function Videolisting(){
                 <h3>{item.title} </h3>
                 <small>{item.views} views</small>
                 <div className="creator-details">
-                    <img src={item.avatar} className="avatar" />
+                    <img src={item.avatar} className="avatar" alt="avatar" />
                     <h3>{item.creator}</h3>
                 </div>
                
