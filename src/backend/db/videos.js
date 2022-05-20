@@ -8,7 +8,7 @@ export const videos = [{
         title: "Nuvvani Idhi Needani Full Video Song || Maharshi Songs || MaheshBabu || VamshiPaidipally",
         description: "Watch & Enjoy #NuvvaniIdhiNeedani Full Video Song From #Maharshi Movie.",
         creator: "Aditya Music",
-        thumbnail: "https://i.ytimg.com/vi/4dbiE-da82E/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDNQDPCRPz1idPDNKhdmCN0ZOBPPg",
+        thumbnail: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOVP.nmuN8zpQ3PYST2tKHQGrxwIIGG%26pid%3DApi&f=1",
         avatar: "https://yt3.ggpht.com/ytc/AKedOLReKISHylSA5PAVOXXnQycmveRc6NdoQT661kJswg=s48-c-k-c0x00ffffff-no-rj",
         views: "2C",
         duration: "4:00",

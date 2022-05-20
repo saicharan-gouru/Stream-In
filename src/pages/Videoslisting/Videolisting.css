@@ -43,6 +43,15 @@
     margin: 1rem;
 }
 
+.duration {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: -3rem;
+}
+
 .video-card:hover {
     box-shadow: 0 5px 15px var(--black);
 }

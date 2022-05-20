@@ -11,7 +11,10 @@ function Videolisting(){
         <div className="videos-container">
             {videos.map(item => 
             <div className="video-card">
-                <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />
+                <div>
+                    <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />
+                    <span className="duration">{item.duration}</span>
+                </div>
                 <h3>{item.title} </h3>
                 <small>{item.views} views</small>
                 <div className="creator-details">
