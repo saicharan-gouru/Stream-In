@@ -1,3 +1,4 @@
 import { Homepage } from "./Homepage/Homepage";
+import { Videolisting } from "./Videoslisting/Videolisting";
 
-export { Homepage };
+export { Homepage, Videolisting };

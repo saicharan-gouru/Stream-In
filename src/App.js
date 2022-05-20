@@ -1,7 +1,7 @@
 import "./App.css";
 import {Navbar,Footer} from "./components";
 import {Routes,Route} from "react-router-dom";
-import {Homepage} from "./pages";
+import {Homepage,Videolisting} from "./pages";
 
 
 
@@ -11,6 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/videos" element={<Videolisting />} />
       </Routes>
       <Footer />
     </div>

@@ -14,7 +14,7 @@ function DataProvider({children}){
                 const response1 = await axios.get("/api/categories");
                 videosDispatch({type:"FETCH_CATEGORIES",payload:response1.data.categories})
                 const response2 = await axios.get("/api/videos");
-                videosDispatch({type:"FETCH_VIDEOS",payload:response2.data.products})
+                videosDispatch({type:"FETCH_VIDEOS",payload:response2.data.videos})
             }
             catch(error){
                 console.log(error);
