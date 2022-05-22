@@ -20,8 +20,7 @@ function Videolisting(){
                 <div className="creator-details">
                     <img src={item.avatar} className="avatar" alt="avatar" />
                     <h3>{item.creator}</h3>
-                </div>
-               
+                </div>       
             </div>
             )}
         </div>
