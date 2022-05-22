@@ -4,9 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url(https://getwallpapers.com/wallpaper/full/5/6/6/1402353-download-cool-plain-backgrounds-1920x1080-pc.jpg);
     background-size: cover;
-    color: var(--white);
     font-weight: bold;
 }
 

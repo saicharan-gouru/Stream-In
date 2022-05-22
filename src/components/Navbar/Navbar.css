@@ -5,6 +5,9 @@
     justify-content: space-between;
     align-items: center;
     color: var(--secondary-color);
+    position: fixed;
+    z-index: 1;
+    width: 97%;
 }
 
 .title {

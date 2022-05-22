@@ -10,3 +10,14 @@
 .App {
     text-align: center;
 }
+
+.app-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.app-content {
+    margin-left: 6rem;
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+}
