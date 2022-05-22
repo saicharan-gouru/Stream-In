@@ -3,13 +3,14 @@ import {useData} from "../../contexts";
 
 function Videolisting(){
 
-    const {videos} = useData();    
+    const {filteredVideos,videosDispatch} = useData();    
 
     return(
         <div>
+            <button onClick={() => videosDispatch({type:"FILTER",payload:"Tollywood"})}>Tollywood</button>
             <h1>Videos</h1>
         <div className="videos-container">
-            {videos.map(item => 
+            {filteredVideos.map(item => 
             <div className="video-card">
                 <div>
                     <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />

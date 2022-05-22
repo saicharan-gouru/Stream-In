@@ -78,6 +78,6 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/ytc/AKedOLTWSuXvajlpkF0dcqa8Mf2Va5svzH7b9EC1x0Q7zA=s48-c-k-c0x00ffffff-no-rj",
         views: "23L",
         duration: "3:17",
-        categoryName: "Bollywood"
+        categoryName: "Cartoon"
     }
 ];
