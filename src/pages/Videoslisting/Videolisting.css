@@ -55,3 +55,17 @@
 .video-card:hover {
     box-shadow: 0 5px 15px var(--black);
 }
+
+.filter-btn {
+    padding: 0.5rem;
+    border: 0px;
+    margin: 1rem;
+    cursor: pointer;
+    border-radius: 30%;
+    font-weight: bold;
+}
+
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}

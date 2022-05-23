@@ -79,5 +79,16 @@ export const videos = [{
         views: "23L",
         duration: "3:17",
         categoryName: "Cartoon"
+    },
+    {
+        _id: "D_Stdlmp9lm",
+        title: "*NEW SONG!* I'M BEAN, MR. BEAN | Music Video | Mr. Bean Official",
+        creator: "Mr Bean",
+        description: "Welcome to the official Mr Bean Channel. Here you will find all of your favourite Mr Bean moments from the classic series with Rowan Atkinson and his new animated adventures. Make sure to subscribe and never miss a Full Episode of Mr Bean, or Mr Bean Compilations and clips as well as originals including Mr Bean Comics.",
+        thumbnail: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOVP.kBFcB56RynuhbHs3RAtB9gIIEk%26pid%3DApi&f=1",
+        avatar: "https://yt3.ggpht.com/ytc/AKedOLSOkEcl2lDSFEBtGFoNL8eLULm1RkXnBcb3i45uxA=s48-c-k-c0x00ffffff-no-rj",
+        views: "2.1C",
+        duration: "2:16",
+        categoryName: "Cartoon"
     }
 ];
