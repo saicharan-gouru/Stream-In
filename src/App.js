@@ -1,7 +1,7 @@
 import "./App.css";
 import {Navbar,Footer,Sidebar} from "./components";
 import {Routes,Route} from "react-router-dom";
-import {Homepage,Videolisting} from "./pages";
+import {Homepage,Videolisting,Login,Signup} from "./pages";
 
 
 
@@ -15,6 +15,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/videos" element={<Videolisting />} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/signup" element={<Signup/>} />
+            <Route path="*" element={<h1>Page not found</h1>} />
           </Routes>
         </div>
       </div>
