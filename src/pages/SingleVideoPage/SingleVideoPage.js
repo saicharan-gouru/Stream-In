@@ -20,7 +20,8 @@ function SingleVideoPage(){
                     className="video"
                     src={item.src}
                     frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen>
                     </iframe>    
                     <div className="video-details">
                         <h2>{item.title}</h2>
