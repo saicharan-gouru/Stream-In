@@ -2,9 +2,10 @@ import "./Homepage.css";
 import {Categories} from "./components/Categories";
 import {Link} from "react-router-dom";
 import {useData} from "../../contexts";
+import {useDocumentTitle} from "../../customhooks";
 
 function Homepage(){
-
+    useDocumentTitle("Stream In | Home")
     const {videosDispatch} = useData();
     return(
         <div>

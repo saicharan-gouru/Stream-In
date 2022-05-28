@@ -3,9 +3,10 @@ import {useState} from "react";
 import {Link,useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts";
 import axios from "axios";
+import {useDocumentTitle} from "../../customhooks";
 
 function Signup(){
-
+    useDocumentTitle("Stream In | Sign up")
     const { setUser } = useAuth();
     const [email, setUserName] = useState("");
     const [password, setPassword] = useState("");
