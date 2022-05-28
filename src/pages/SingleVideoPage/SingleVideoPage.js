@@ -7,8 +7,8 @@ function SingleVideoPage(){
     const { videos } = useData();
     const { _id } = useParams();
     const getSingleVideo = videos.filter((item) => item._id===_id);
-    const getSimilarVideos = videos.filter((item) => item.categoryName === getSingleVideo[0].categoryName);
-    console.log(getSimilarVideos)
+    let getSimilarVideos = videos.filter((item) => item.categoryName === getSingleVideo[0].categoryName);
+    getSimilarVideos = getSimilarVideos.filter((item) => item._id !== _id);
 
     return(
         <div>
