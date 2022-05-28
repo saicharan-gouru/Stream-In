@@ -18,7 +18,7 @@ function Videolisting(){
             <div className="videos-container">
                 {filteredVideos.map( 
                 item =>
-                <Link to={`/video/${item._id}`} className="video-card">
+                <Link to={`/video/${item._id}`} className="video-card" key={item._id}>
                     <div>
                         <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />
                         <span className="duration">{item.duration}</span>

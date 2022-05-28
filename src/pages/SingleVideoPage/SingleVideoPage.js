@@ -14,9 +14,10 @@ function SingleVideoPage(){
         <div>
             {
                 getSingleVideo.map(item =>
-                <div>
+                <div key={item._id}>
                     <iframe
-                    className='video'
+                    title="video"
+                    className="video"
                     src={item.src}
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -36,7 +37,7 @@ function SingleVideoPage(){
                     {
                         getSimilarVideos.map( 
                             item =>
-                            <Link to={`/video/${item._id}`} className="video-card">
+                            <Link to={`/video/${item._id}`} className="video-card" key={item._id}>
                                 <div>
                                     <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />
                                     <span className="duration">{item.duration}</span>
