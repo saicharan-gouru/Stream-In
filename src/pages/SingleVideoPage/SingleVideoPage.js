@@ -1,6 +1,7 @@
 import "./SingleVideoPage.css";
 import {useData} from "../../contexts";
 import {useParams,Link} from "react-router-dom";
+import {useDocumentTitle} from "../../customhooks";
 
 function SingleVideoPage(){
 
@@ -9,6 +10,7 @@ function SingleVideoPage(){
     const getSingleVideo = videos.filter((item) => item._id===_id);
     let getSimilarVideos = videos.filter((item) => item.categoryName === getSingleVideo[0].categoryName);
     getSimilarVideos = getSimilarVideos.filter((item) => item._id !== _id);
+    useDocumentTitle(getSingleVideo[0].title)
 
     return(
         <div>

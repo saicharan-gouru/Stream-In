@@ -1,9 +1,10 @@
 import "./Videolisting.css";
 import {useData} from "../../contexts";
 import {Link} from "react-router-dom";
+import {useDocumentTitle} from "../../customhooks";
 
 function Videolisting(){
-
+    useDocumentTitle("Stream In | Explore")
     const {filteredVideos,videosDispatch} = useData();    
 
     return(

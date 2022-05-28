@@ -3,10 +3,10 @@ import {useState} from "react";
 import {Link,useNavigate,useLocation} from "react-router-dom";
 import {useAuth} from "../../contexts";
 import axios from "axios";
-
+import {useDocumentTitle} from "../../customhooks";
 
 function Login(){
-
+    useDocumentTitle("Stream In | Login")
     const { setUser } = useAuth();
     const [email, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -36,7 +36,6 @@ function Login(){
     }
 
     const useTestCredentials = () => {
-     
         setPassword("adarshBalika123");
         setUserName("adarshbalika@gmail.com")
     }
