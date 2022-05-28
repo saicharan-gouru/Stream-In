@@ -12,7 +12,8 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/ytc/AKedOLReKISHylSA5PAVOXXnQycmveRc6NdoQT661kJswg=s48-c-k-c0x00ffffff-no-rj",
         views: "2C",
         duration: "4:00",
-        categoryName: "Tollywood"
+        categoryName: "Tollywood",
+        src: "https://www.youtube.com/embed/4dbiE-da82E",
     },
     {
         _id: "F_Riqjdh2oM",
@@ -23,7 +24,8 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/pBSC4REluv1kfFoFCFyCCL6yFo2RX3om4irYVowOylRBfbboyMfEpqgE9Km8nZosxmOt8eBP1Q=s48-c-k-c0x00ffffff-no-rj",
         views: "18L",
         duration: "3:50",
-        categoryName: "Tollywood"
+        categoryName: "Tollywood",
+        src: "https://www.youtube.com/embed/W_cNJEaW6jg",
     },
     {
         _id: "Q_Riqjdh2oM",
@@ -34,7 +36,8 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/ytc/AKedOLReKISHylSA5PAVOXXnQycmveRc6NdoQT661kJswg=s48-c-k-c0x00ffffff-no-rj",
         views: "1.1C",
         duration: "3:31",
-        categoryName: "Tollywood"
+        categoryName: "Tollywood",
+        src: "https://www.youtube.com/embed/VdGY5cs7onc",
     },
     {
         _id: "A_Stqjdh2oM",
@@ -45,7 +48,8 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/WkDJxNndzmmBIQJGV_elWu40bhk8ZOG21WRXxe3Cqam3SErDHZ2j0JwEPjFGrDng2O9U0CnXVw=s176-c-k-c0x00ffffff-no-rj",
         views: "27L",
         duration: "2:44",
-        categoryName: "Bollywood"
+        categoryName: "Bollywood",
+        src: "https://www.youtube.com/embed/SQSR8-PftwA",
     },
     {
         _id: "V_Stdjah2ji",
@@ -56,7 +60,8 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/vJEsALWnQIwPZ2oaVbFWPu1n4L0CDkHpAdGJ-KBPFsxM9hsMsvExFK1mnCGUrMzfC67XPVThmQ=s176-c-k-c0x00ffffff-no-rj",
         views: "25C",
         duration: "3:14",
-        categoryName: "Bollywood"
+        categoryName: "Bollywood",
+        src: "https://www.youtube.com/embed/V7LwfY5U5WI",
     },
     {
         _id: "W_Stdjam5ji",
@@ -67,7 +72,8 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/EEGERwlaKJd27zSEPQF3d__-tPyppIgFfKvNfBkWa7ssMKBWqQUbuCTLe-kAnTB1r6kJQVxyxwY=s176-c-k-c0x00ffffff-no-rj",
         views: "19C",
         duration: "3:03",
-        categoryName: "Bollywood"
+        categoryName: "Bollywood",
+        src: "https://www.youtube.com/embed/lgTHGZF3BQw",
     },
     {
         _id: "N_Stdjkm5li",
@@ -78,17 +84,19 @@ export const videos = [{
         avatar: "https://yt3.ggpht.com/ytc/AKedOLTWSuXvajlpkF0dcqa8Mf2Va5svzH7b9EC1x0Q7zA=s48-c-k-c0x00ffffff-no-rj",
         views: "23L",
         duration: "3:17",
-        categoryName: "Cartoon"
+        categoryName: "Cartoon",
+        src: "https://www.youtube.com/embed/PZcHR_zMRgU",
     },
     {
         _id: "D_Stdlmp9lm",
         title: "*NEW SONG!* I'M BEAN, MR. BEAN | Music Video | Mr. Bean Official",
         creator: "Mr Bean",
-        description: "Welcome to the official Mr Bean Channel. Here you will find all of your favourite Mr Bean moments from the classic series with Rowan Atkinson and his new animated adventures. Make sure to subscribe and never miss a Full Episode of Mr Bean, or Mr Bean Compilations and clips as well as originals including Mr Bean Comics.",
+        description: "Welcome to the official Mr Bean Channel. Here you will find all of your favourite Mr Bean moments.",
         thumbnail: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOVP.kBFcB56RynuhbHs3RAtB9gIIEk%26pid%3DApi&f=1",
         avatar: "https://yt3.ggpht.com/ytc/AKedOLSOkEcl2lDSFEBtGFoNL8eLULm1RkXnBcb3i45uxA=s48-c-k-c0x00ffffff-no-rj",
         views: "2.1C",
         duration: "2:16",
-        categoryName: "Cartoon"
+        categoryName: "Cartoon",
+        src: "https://www.youtube.com/embed/AP4fxEnn4NM",
     }
 ];

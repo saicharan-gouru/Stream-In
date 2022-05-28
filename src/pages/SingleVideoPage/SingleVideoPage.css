@@ -1,0 +1,13 @@
+.video {
+    width: 80%;
+    height: 70vh;
+    padding: 2rem 2rem 0rem 3rem;
+}
+
+.video-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 10rem;
+}
