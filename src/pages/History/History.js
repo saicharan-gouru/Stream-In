@@ -25,7 +25,7 @@ function History(){
 
     useEffect(() => {
         getAllVideoInHistory()
-    },[])
+    })
 
     const clearHistoryHandler = async () =>{
         try{
