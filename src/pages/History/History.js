@@ -4,10 +4,11 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
+import {useDocumentTitle} from "../../customhooks";
 
 
 function History(){
-
+    useDocumentTitle("Stream In | History");
     const [videosInHistory, setVideosInHistory] = useState([])
     const encodedToken = localStorage.getItem("token")
     
