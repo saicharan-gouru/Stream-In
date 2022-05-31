@@ -1,7 +1,7 @@
 import "./App.css";
-import {Navbar,Footer,Sidebar,ScrollToTop} from "./components";
+import {Navbar,Footer,Sidebar,ScrollToTop,RequiresAuth} from "./components";
 import {Routes,Route} from "react-router-dom";
-import {Homepage,Videolisting,Login,Signup,SingleVideoPage} from "./pages";
+import {Homepage,Videolisting,Login,Signup,SingleVideoPage,History} from "./pages";
 
 
 
@@ -20,6 +20,7 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
             <Route path="video/:_id" element={<SingleVideoPage />}></Route>
             <Route path="*" element={<h1>Page not found</h1>} />
+            <Route path="/history" element={<RequiresAuth><History /></RequiresAuth>}></Route>
           </Routes>
           </ScrollToTop>
         </div>

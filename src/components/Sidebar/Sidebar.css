@@ -8,9 +8,13 @@
 }
 
 .nav-link {
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--primary-color);
     text-decoration: none;
     color: var(--white);
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
