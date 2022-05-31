@@ -8,7 +8,7 @@ import axios from "axios";
 function SingleVideoPage(){
     const { videos } = useData();
     const { _id } = useParams();
-    const video = videos.filter((item) => item._id===_id)[0];
+    const video = videos.find((item) => item._id===_id);
     const getSingleVideo = video;
     useDocumentTitle(getSingleVideo.title);
     let getSimilarVideos = videos.filter((item) => item.categoryName === getSingleVideo.categoryName);
