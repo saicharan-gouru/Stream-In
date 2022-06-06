@@ -11,3 +11,8 @@
     align-items: flex-start;
     padding-left: 10rem;
 }
+
+.like-icon {
+    cursor: pointer;
+    padding-bottom: 1rem;
+}
