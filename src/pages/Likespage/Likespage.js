@@ -3,6 +3,7 @@ import {useDocumentTitle} from "../../customhooks";
 import {useEffect,useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import { Default } from "../../components";
 
 
 
@@ -34,8 +35,9 @@ function Likespage(){
 
     return(
         <div>
-            <h1>Likes</h1>
+            <h1>Liked videos</h1>
             <div className="videos-container">
+                {videosInLiked.length===0 && <Default/>}
                 {videosInLiked.map(item => 
                 <div className="liked-video-card" key={item._id}>
                     <div className="liked-video-card-container-1">

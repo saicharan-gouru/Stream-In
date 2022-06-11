@@ -1,0 +1,12 @@
+.default-container {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default-text {
+    background-color: var(--gold);
+    padding: 1rem;
+    border-radius: 1rem;
+}

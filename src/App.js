@@ -1,7 +1,7 @@
 import "./App.css";
 import {Navbar,Footer,Sidebar,ScrollToTop,RequiresAuth} from "./components";
 import {Routes,Route} from "react-router-dom";
-import {Homepage,Videolisting,Login,Signup,SingleVideoPage,History,Likespage} from "./pages";
+import {Homepage,Videolisting,Login,Signup,SingleVideoPage,History,Likespage,Watchlater} from "./pages";
 
 
 
@@ -22,6 +22,7 @@ function App() {
             <Route path="*" element={<h1>Page not found</h1>} />
             <Route path="/history" element={<RequiresAuth><History /></RequiresAuth>}></Route>
             <Route path="/liked" element={<RequiresAuth><Likespage /></RequiresAuth>}></Route>
+            <Route path="/watchlater" element={<RequiresAuth><Watchlater /></RequiresAuth>}></Route>
           </Routes>
           </ScrollToTop>
         </div>
