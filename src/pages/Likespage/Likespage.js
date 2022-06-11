@@ -4,6 +4,7 @@ import {useEffect,useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import { Default } from "../../components";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
@@ -26,6 +27,17 @@ function Likespage(){
         }
     }
 
+    const deleteFromLikedHandler = async (_id) => {
+        try{
+            const data = await axios.delete(`/api/user/likes/${_id}`,{
+                headers: {authorization: encodedToken}
+            })
+            setVideosInLiked(data.data.likes);
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
 
 
     useEffect(() => {
@@ -37,7 +49,6 @@ function Likespage(){
         <div>
             <h1>Liked videos</h1>
             <div className="videos-container">
-                {videosInLiked.length===0 && <Default/>}
                 {videosInLiked.map(item => 
                 <div className="liked-video-card" key={item._id}>
                     <div className="liked-video-card-container-1">
@@ -53,8 +64,10 @@ function Likespage(){
                         </div>
                         <Link to={`/video/${item._id}`}>Go to video</Link>
                     </div>
+                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromLikedHandler(item._id)}></DeleteIcon>
                 </div>
                  )}
+                {videosInLiked.length===0 && <Default/>}
             </div>
         </div>
     )

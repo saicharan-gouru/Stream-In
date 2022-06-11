@@ -1,7 +1,7 @@
 import "./SingleVideoPage.css";
 import {useEffect}from "react";
-import {useData} from "../../contexts";
-import {useParams,Link} from "react-router-dom";
+import {useData,useAuth} from "../../contexts";
+import {useParams,Link,useNavigate} from "react-router-dom";
 import {useDocumentTitle} from "../../customhooks";
 import axios from "axios";
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
@@ -11,8 +11,11 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import { useState } from "react";
 
 
+
 function SingleVideoPage(){
     const { videos } = useData();
+    const navigate = useNavigate();
+    const {user} = useAuth();
     const { _id } = useParams();
     const [videosInLiked, setVideosInLiked] = useState([]);
     const [videosInWatchlater,setVideosInWatchlater] = useState([]);
@@ -73,20 +76,32 @@ function SingleVideoPage(){
     }
 
     const addvideoToLiked = async () => {
+        if(user)
+        {
         try {
             await axios.post("/api/user/likes", { video },
                 { headers: { authorization: encodedToken } })
         } catch (error) {
             console.log(error)
         }
+        }
+        else{
+            navigate("/login")
+        }
     }
 
     const addVideoToWatchlater = async () => {
+        if(user)
+        {
         try {
             await axios.post("/api/user/watchlater", { video },
                 { headers: { authorization: encodedToken } })
         } catch (error) {
             console.log(error)
+        }
+        }
+        else{
+            navigate("/login")
         }
     }
 
