@@ -5,5 +5,6 @@ import { Signup } from "./Authpages/Signup";
 import { SingleVideoPage } from "./SingleVideoPage/SingleVideoPage";
 import { History } from "./History/History";
 import { Likespage } from "./Likespage/Likespage";
+import { Watchlater } from "./Watchlaterpage/Watchlater";
 
-export { Homepage, Videolisting, Login, Signup, SingleVideoPage, History, Likespage };
+export { Homepage, Videolisting, Login, Signup, SingleVideoPage, History, Likespage, Watchlater };

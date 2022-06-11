@@ -1,38 +1,36 @@
-import "./Likespage.css";
+import "./Watchlater.css";
 import {useDocumentTitle} from "../../customhooks";
-import {useEffect,useState} from "react";
 import axios from "axios";
+import {useEffect,useState} from "react";
 import {Link} from "react-router-dom";
-import { Default } from "../../components";
+import {Default} from "../../components";
 import DeleteIcon from '@mui/icons-material/Delete';
 
+function Watchlater(){
 
-
-
-function Likespage(){
-    useDocumentTitle("Stream In | Liked");
-    const [videosInLiked, setVideosInLiked] = useState([])
+    useDocumentTitle("Stream In | Watchlater");
+    const [videosInWatchlater, setVideosInWatchlater] = useState([])
     const encodedToken = localStorage.getItem("token")
     
 
-    const getAllVideoInLiked = async () => {
+    const getAllVideoInWatchlater = async () => {
         try {
-            const data = await axios.get("/api/user/likes", {
+            const data = await axios.get("/api/user/watchlater", {
                 headers: { authorization: encodedToken }
             })
-            setVideosInLiked(data.data.likes)
-            console.log(data.data.likes)
+            setVideosInWatchlater(data.data.watchlater)
+            console.log(data.data.watchlater)
         } catch (error) {
             console.log(error)
         }
     }
 
-    const deleteFromLikedHandler = async (_id) => {
+    const deleteFromWatchlaterHandler = async (_id) => {
         try{
-            const data = await axios.delete(`/api/user/likes/${_id}`,{
+            const data = await axios.delete(`/api/user/watchlater/${_id}`,{
                 headers: {authorization: encodedToken}
             })
-            setVideosInLiked(data.data.likes);
+            setVideosInWatchlater(data.data.watchlater);
         }
         catch(error){
             console.log(error)
@@ -40,22 +38,24 @@ function Likespage(){
     }
 
 
+
     useEffect(() => {
-        getAllVideoInLiked()
+        getAllVideoInWatchlater()
     })
 
 
     return(
         <div>
-            <h1>Liked videos</h1>
+            <h1>Watchlater</h1>
             <div className="videos-container">
-                {videosInLiked.map(item => 
-                <div className="liked-video-card" key={item._id}>
-                    <div className="liked-video-card-container-1">
+                
+                {videosInWatchlater.map(item => 
+                <div className="watchlater-video-card" key={item._id}>
+                    <div className="watchlater-video-card-container-1">
                         <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />
                         <span className="duration">{item.duration}</span>
                     </div>
-                    <div className="liked-video-card-container-1">
+                    <div className="watchlater-video-card-container-1">
                         <h3>{item.title} </h3>
                         
                         <div className="creator-details">
@@ -64,13 +64,13 @@ function Likespage(){
                         </div>
                         <Link to={`/video/${item._id}`}>Go to video</Link>
                     </div>
-                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromLikedHandler(item._id)}></DeleteIcon>
+                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromWatchlaterHandler(item._id)}></DeleteIcon>
                 </div>
                  )}
-                {videosInLiked.length===0 && <Default/>}
+                {videosInWatchlater.length===0 && <Default/>}
             </div>
         </div>
     )
 }
 
-export {Likespage};
+export {Watchlater};

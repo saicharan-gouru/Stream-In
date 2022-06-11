@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import {useDocumentTitle} from "../../customhooks";
+import { Default } from "../../components";
 
 
 function History(){
@@ -59,7 +60,8 @@ function History(){
             <h1>History</h1>
             <ClearAllIcon className="delete-icon" onClick={clearHistoryHandler}></ClearAllIcon>
             <div className="videos-container">
-                {videosInHistory.map(item => 
+                {videosInHistory.length === 0 && <Default />}
+                { videosInHistory.map(item => 
                 <div className="history-video-card" key={item._id}>
                     <div className="history-video-card-container-1">
                         <img src={item.thumbnail} className="thumbnail" alt={item.categoryName} />

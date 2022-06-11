@@ -1,0 +1,23 @@
+.watchlater-video-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+    padding: 1rem;
+    cursor: pointer;
+    gap: 5rem;
+}
+
+.watchlater-video-card-container-1 {
+    width: 50%;
+}
+
+.watchlater-video-card-container-2 {
+    width: 50%;
+}

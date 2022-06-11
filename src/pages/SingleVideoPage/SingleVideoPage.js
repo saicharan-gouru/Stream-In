@@ -1,17 +1,25 @@
 import "./SingleVideoPage.css";
 import {useEffect}from "react";
-import {useData} from "../../contexts";
-import {useParams,Link} from "react-router-dom";
+import {useData,useAuth} from "../../contexts";
+import {useParams,Link,useNavigate} from "react-router-dom";
 import {useDocumentTitle} from "../../customhooks";
 import axios from "axios";
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
+import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import { useState } from "react";
+
+
 
 function SingleVideoPage(){
     const { videos } = useData();
+    const navigate = useNavigate();
+    const {user} = useAuth();
     const { _id } = useParams();
     const [videosInLiked, setVideosInLiked] = useState([]);
+    const [videosInWatchlater,setVideosInWatchlater] = useState([]);
+    const [watchlater,setWatchlater] = useState(false);
     const [liked,setLiked] = useState(false);
     const video = videos.find((item) => item._id===_id);
     const getSingleVideo = video;
@@ -32,6 +40,25 @@ function SingleVideoPage(){
         }
     }
 
+    const getAllVideoInWatchlater = async () => {
+        try {
+            const data = await axios.get("/api/user/watchlater", {
+                headers: { authorization: encodedToken }
+            })
+            setVideosInWatchlater(data.data.watchlater)
+            console.log(data.data.watchlater)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const isInWatchlater = (video) => {
+        if(videosInWatchlater.find(item => item._id === video._id))
+        setWatchlater(true)
+        else
+        setWatchlater(false)
+    }
+
     const isLiked = (video) => {
         if(videosInLiked.find(item => item._id === video._id))
         setLiked(true)
@@ -49,11 +76,32 @@ function SingleVideoPage(){
     }
 
     const addvideoToLiked = async () => {
+        if(user)
+        {
         try {
             await axios.post("/api/user/likes", { video },
                 { headers: { authorization: encodedToken } })
         } catch (error) {
             console.log(error)
+        }
+        }
+        else{
+            navigate("/login")
+        }
+    }
+
+    const addVideoToWatchlater = async () => {
+        if(user)
+        {
+        try {
+            await axios.post("/api/user/watchlater", { video },
+                { headers: { authorization: encodedToken } })
+        } catch (error) {
+            console.log(error)
+        }
+        }
+        else{
+            navigate("/login")
         }
     }
 
@@ -69,10 +117,24 @@ function SingleVideoPage(){
         }
     }
 
+    const deleteFromWatchlaterHandler = async (_id) => {
+        try{
+            const data = await axios.delete(`/api/user/watchlater/${_id}`,{
+                headers: {authorization: encodedToken}
+            })
+            setVideosInWatchlater(data.data.watchlater);
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
     addVideoToHistory();
     isLiked(video); 
-    getAllVideoInLiked();       
+    isInWatchlater(video);
+    getAllVideoInLiked(); 
+    getAllVideoInWatchlater();      
     })
 
     
@@ -91,7 +153,10 @@ function SingleVideoPage(){
                     </iframe>    
                     <div className="video-details">
                         <h2>{getSingleVideo.title}</h2>
-                        {liked ? <ThumbUpIcon className="like-icon" onClick={()=>deleteFromLikedHandler(video._id)}></ThumbUpIcon> : <ThumbUpOutlinedIcon className="like-icon" onClick={addvideoToLiked}></ThumbUpOutlinedIcon> }
+                        <div>
+                            {liked ? <ThumbUpIcon className="like-icon" onClick={()=>deleteFromLikedHandler(video._id)}></ThumbUpIcon> : <ThumbUpOutlinedIcon className="like-icon" onClick={addvideoToLiked}></ThumbUpOutlinedIcon> }
+                            {watchlater ? <WatchLaterIcon className="watchlater-icon" onClick={()=>deleteFromWatchlaterHandler(video._id)}></WatchLaterIcon> : <WatchLaterOutlinedIcon className="watchlater-icon" onClick={addVideoToWatchlater} ></WatchLaterOutlinedIcon> }
+                        </div>
                         <small>{getSingleVideo.views}+ views</small>
                         <p>{getSingleVideo.description}</p>
                         <div className="creator-details">
