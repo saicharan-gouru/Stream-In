@@ -1,0 +1,16 @@
+.playlist {
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid var(--black);
+    border-radius: 1rem;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.playlists-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
