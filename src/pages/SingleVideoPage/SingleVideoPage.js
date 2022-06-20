@@ -8,6 +8,7 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import PlaylistPlayOutlinedIcon from '@mui/icons-material/PlaylistPlayOutlined';
 import { useState } from "react";
 
 
@@ -27,16 +28,19 @@ function SingleVideoPage(){
     let getSimilarVideos = videos.filter((item) => item.categoryName === getSingleVideo.categoryName);
     getSimilarVideos = getSimilarVideos.filter((item) => item._id !== _id);
     const encodedToken = localStorage.getItem('token');
-    
+    const [display,setDisplay] = useState("none");
+    const [title,setTitle] = useState("");
+    const [playlists, setPlaylists] = useState([]);
+
+
     const getAllVideoInLiked = async () => {
         try {
             const data = await axios.get("/api/user/likes", {
                 headers: { authorization: encodedToken }
             })
             setVideosInLiked(data.data.likes)
-            console.log(data.data.likes)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -46,7 +50,7 @@ function SingleVideoPage(){
                 headers: { authorization: encodedToken }
             })
             setVideosInWatchlater(data.data.watchlater)
-            console.log(data.data.watchlater)
+         
         } catch (error) {
             console.log(error)
         }
@@ -71,7 +75,7 @@ function SingleVideoPage(){
             await axios.post("/api/user/history", { video },
                 { headers: { authorization: encodedToken } })
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -105,6 +109,7 @@ function SingleVideoPage(){
         }
     }
 
+
     const deleteFromLikedHandler = async (_id) => {
         try{
             const data = await axios.delete(`/api/user/likes/${_id}`,{
@@ -129,12 +134,53 @@ function SingleVideoPage(){
         }
     }
 
+    const createPlaylist = async () => {
+        if(user)
+        {
+        try {
+            await axios.post("/api/user/playlists", {playlist:{title}},
+                { headers: { authorization: encodedToken } })
+            setTitle("")
+        } catch (error) {
+            console.log(error)
+        }
+        }
+        else{
+            navigate("/login")
+        }
+    }
+
+    const getAllPlaylists = async () => {
+        try {
+            const data = await axios.get("/api/user/playlists", {
+                headers: { authorization: encodedToken }
+            })
+            setPlaylists(data.data.playlists)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const addVideoToPlaylist = async (_id) => {
+        try {
+            const data = await axios.post(`/api/user/playlists/${_id}`, { video },
+                { headers: { authorization: encodedToken } })
+            console.log(data.data)
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+
+
+
     useEffect(() => {
     addVideoToHistory();
     isLiked(video); 
     isInWatchlater(video);
     getAllVideoInLiked(); 
-    getAllVideoInWatchlater();      
+    getAllVideoInWatchlater();   
+    getAllPlaylists();   
     })
 
     
@@ -156,6 +202,17 @@ function SingleVideoPage(){
                         <div>
                             {liked ? <ThumbUpIcon className="like-icon" onClick={()=>deleteFromLikedHandler(video._id)}></ThumbUpIcon> : <ThumbUpOutlinedIcon className="like-icon" onClick={addvideoToLiked}></ThumbUpOutlinedIcon> }
                             {watchlater ? <WatchLaterIcon className="watchlater-icon" onClick={()=>deleteFromWatchlaterHandler(video._id)}></WatchLaterIcon> : <WatchLaterOutlinedIcon className="watchlater-icon" onClick={addVideoToWatchlater} ></WatchLaterOutlinedIcon> }
+                        </div>
+                        <button className="button-playlist" onClick={()=>setDisplay("block")}><PlaylistPlayOutlinedIcon></PlaylistPlayOutlinedIcon>Add to playlist</button>
+                        <div className="modal" style={{display:display}}>
+                            <div className="modal-content">
+                                <span onClick={()=>setDisplay("none")} class="close">&times;</span>
+                                <input type="text" onChange={(e)=>setTitle(e.target.value)} value={title}/>
+                                <button onClick={createPlaylist}>create</button>
+                                <div>
+                                    {playlists.map(item => <><span>{item.title}</span> <button onClick={()=>addVideoToPlaylist(item._id)}>Add</button></>)}
+                                </div>
+                            </div>
                         </div>
                         <small>{getSingleVideo.views}+ views</small>
                         <p>{getSingleVideo.description}</p>
