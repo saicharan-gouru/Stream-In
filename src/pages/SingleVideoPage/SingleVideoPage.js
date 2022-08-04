@@ -134,7 +134,6 @@ function SingleVideoPage(){
                 headers: {authorization: encodedToken}
             })
             setVideosInWatchlater(data.data.watchlater);
-            
         }
         catch(error){
             console.log(error)
@@ -172,7 +171,7 @@ function SingleVideoPage(){
         try {
             const data = await axios.post(`/api/user/playlists/${_id}`, { video },
                 { headers: { authorization: encodedToken } })
-            console.log(data.data)
+            console.log(data.data);
         } catch (error) {
             console.log(error)
         }
@@ -217,7 +216,7 @@ function SingleVideoPage(){
                                 <input type="text" onChange={(e)=>setTitle(e.target.value)} value={title}/>
                                 <button onClick={createPlaylist}>create</button>
                                 <div>
-                                    {playlists.map(item => <><span>{item.title}</span> <button onClick={()=>addVideoToPlaylist(item._id)}>Add</button></>)}
+                                    {playlists.map(item => <><span>{item.title}</span> <button onClick={()=>{triggerToast("success","Video added to playlist");addVideoToPlaylist(item._id)}}>Add</button></>)}
                                 </div>
                             </div>
                         </div>

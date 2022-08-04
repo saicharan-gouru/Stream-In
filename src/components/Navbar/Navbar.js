@@ -2,8 +2,7 @@ import "./Navbar.css";
 import {Link,useNavigate} from "react-router-dom";
 import {useAuth} from "../../contexts";
 import LiveTvIcon from '@mui/icons-material/LiveTv';
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+
 import {triggerToast} from "../../services";
 
 
@@ -22,7 +21,7 @@ function Navbar(){
     return(
         <div className="nav-bar">
             <Link to="/" className="title"><h1><LiveTvIcon></LiveTvIcon> StreamIn </h1></Link>
-            {user ? <LogoutIcon className="logout-btn" onClick={logoutHandler} >Logout</LogoutIcon> : <Link to="/login" className="login-btn"><LoginIcon></LoginIcon></Link>}
+            {user ? <button className="button primary-red" onClick={logoutHandler} >Logout</button> : <Link to="/login"><button className="button primary-green">Login</button></Link>}
         </div>
     )
 }
