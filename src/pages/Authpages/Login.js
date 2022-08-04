@@ -39,8 +39,8 @@ function Login(){
     }
 
     const useTestCredentials = () => {
-        setPassword("adarshBalika123");
-        setUserName("adarshbalika@gmail.com");
+        setPassword("saicharan123");
+        setUserName("saicharangouru@gmail.com");
     }
 
 
