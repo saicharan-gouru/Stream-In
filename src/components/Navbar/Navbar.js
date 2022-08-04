@@ -4,6 +4,7 @@ import {useAuth} from "../../contexts";
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {triggerToast} from "../../services";
 
 
 function Navbar(){
@@ -14,6 +15,7 @@ function Navbar(){
     const logoutHandler = () => {
         localStorage.removeItem("token");
         setUser(null);
+        triggerToast("success","logout successsful")
         navigate("/");
       };
 

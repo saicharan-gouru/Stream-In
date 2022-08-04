@@ -1,6 +1,8 @@
 import "./App.css";
 import {Navbar,Footer,Sidebar,ScrollToTop,RequiresAuth} from "./components";
 import {Routes,Route} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {Homepage,Videolisting,Login,Signup,SingleVideoPage,History,Likespage,Watchlater,Playlistpage,SinglePlaylistpage} from "./pages";
 
 
@@ -29,6 +31,18 @@ function App() {
           </ScrollToTop>
         </div>
       </div>
+      <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          theme="colored"
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       <Footer />
     </div>
   );

@@ -4,9 +4,10 @@ import {Link,useNavigate,useLocation} from "react-router-dom";
 import {useAuth} from "../../contexts";
 import axios from "axios";
 import {useDocumentTitle} from "../../customhooks";
+import {triggerToast} from "../../services";
 
 function Login(){
-    useDocumentTitle("Stream In | Login")
+    useDocumentTitle("Stream In | Login");
     const { setUser } = useAuth();
     const [email, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -26,18 +27,20 @@ function Login(){
             const { data } = await axios.post("/api/auth/login", { email, password });
             const { foundUser, encodedToken } = data;
             setUser(foundUser);
+            triggerToast("success","login successful")
             localStorage.setItem("token", encodedToken);
             navigate(location.state?.from?.pathname || "/", { replace: true });
           } 
           catch (error) {
-            setError("Invalid username/password")
+            setError("Invalid username/password");
+            triggerToast("error","login failed")
             console.error(error);
           }
     }
 
     const useTestCredentials = () => {
         setPassword("adarshBalika123");
-        setUserName("adarshbalika@gmail.com")
+        setUserName("adarshbalika@gmail.com");
     }
 
 

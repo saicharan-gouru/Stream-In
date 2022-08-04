@@ -10,6 +10,7 @@ import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import PlaylistPlayOutlinedIcon from '@mui/icons-material/PlaylistPlayOutlined';
 import { useState } from "react";
+import {triggerToast} from "../../services";
 
 
 
@@ -84,7 +85,8 @@ function SingleVideoPage(){
         {
         try {
             await axios.post("/api/user/likes", { video },
-                { headers: { authorization: encodedToken } })
+                { headers: { authorization: encodedToken } });
+            triggerToast("success","video liked")
         } catch (error) {
             console.log(error)
         }
@@ -95,11 +97,13 @@ function SingleVideoPage(){
     }
 
     const addVideoToWatchlater = async () => {
+        
         if(user)
         {
+        triggerToast("success","video added to watchlater");
         try {
             await axios.post("/api/user/watchlater", { video },
-                { headers: { authorization: encodedToken } })
+                { headers: { authorization: encodedToken } });
         } catch (error) {
             console.log(error)
         }
@@ -114,8 +118,9 @@ function SingleVideoPage(){
         try{
             const data = await axios.delete(`/api/user/likes/${_id}`,{
                 headers: {authorization: encodedToken}
-            })
+            });
             setVideosInLiked(data.data.likes);
+            triggerToast("warning","video unliked")
         }
         catch(error){
             console.log(error)
@@ -124,10 +129,12 @@ function SingleVideoPage(){
 
     const deleteFromWatchlaterHandler = async (_id) => {
         try{
+            triggerToast("warning","video removed from watchlater")
             const data = await axios.delete(`/api/user/watchlater/${_id}`,{
                 headers: {authorization: encodedToken}
             })
             setVideosInWatchlater(data.data.watchlater);
+            
         }
         catch(error){
             console.log(error)
