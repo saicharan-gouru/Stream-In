@@ -10,17 +10,13 @@ import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import PlaylistPlayOutlinedIcon from '@mui/icons-material/PlaylistPlayOutlined';
 import { useState } from "react";
-import {triggerToast} from "../../services";
-
-
+import {triggerToast,addvideoToLiked,deleteFromLikedHandler,addVideoToWatchlater,deleteFromWatchlaterHandler} from "../../services";
 
 function SingleVideoPage(){
-    const { videos } = useData();
+    const { videos,videosInLiked,videosDispatch,videosInWatchlater } = useData();
     const navigate = useNavigate();
     const {user} = useAuth();
     const { _id } = useParams();
-    const [videosInLiked, setVideosInLiked] = useState([]);
-    const [videosInWatchlater,setVideosInWatchlater] = useState([]);
     const [watchlater,setWatchlater] = useState(false);
     const [liked,setLiked] = useState(false);
     const video = videos.find((item) => item._id===_id);
@@ -34,28 +30,7 @@ function SingleVideoPage(){
     const [playlists, setPlaylists] = useState([]);
 
 
-    const getAllVideoInLiked = async () => {
-        try {
-            const data = await axios.get("/api/user/likes", {
-                headers: { authorization: encodedToken }
-            })
-            setVideosInLiked(data.data.likes)
-        } catch (error) {
-            // console.log(error)
-        }
-    }
 
-    const getAllVideoInWatchlater = async () => {
-        try {
-            const data = await axios.get("/api/user/watchlater", {
-                headers: { authorization: encodedToken }
-            })
-            setVideosInWatchlater(data.data.watchlater)
-         
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const isInWatchlater = (video) => {
         if(videosInWatchlater.find(item => item._id === video._id))
@@ -80,65 +55,6 @@ function SingleVideoPage(){
         }
     }
 
-    const addvideoToLiked = async () => {
-        if(user)
-        {
-        try {
-            await axios.post("/api/user/likes", { video },
-                { headers: { authorization: encodedToken } });
-            triggerToast("success","video liked")
-        } catch (error) {
-            console.log(error)
-        }
-        }
-        else{
-            navigate("/login")
-        }
-    }
-
-    const addVideoToWatchlater = async () => {
-        
-        if(user)
-        {
-        triggerToast("success","video added to watchlater");
-        try {
-            await axios.post("/api/user/watchlater", { video },
-                { headers: { authorization: encodedToken } });
-        } catch (error) {
-            console.log(error)
-        }
-        }
-        else{
-            navigate("/login")
-        }
-    }
-
-
-    const deleteFromLikedHandler = async (_id) => {
-        try{
-            const data = await axios.delete(`/api/user/likes/${_id}`,{
-                headers: {authorization: encodedToken}
-            });
-            setVideosInLiked(data.data.likes);
-            triggerToast("warning","video unliked")
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
-
-    const deleteFromWatchlaterHandler = async (_id) => {
-        try{
-            triggerToast("warning","video removed from watchlater")
-            const data = await axios.delete(`/api/user/watchlater/${_id}`,{
-                headers: {authorization: encodedToken}
-            })
-            setVideosInWatchlater(data.data.watchlater);
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
 
     const createPlaylist = async () => {
         if(user)
@@ -183,14 +99,29 @@ function SingleVideoPage(){
     useEffect(() => {
     addVideoToHistory();
     isLiked(video); 
-    isInWatchlater(video);
-    getAllVideoInLiked(); 
-    getAllVideoInWatchlater();   
+    isInWatchlater(video);  
     getAllPlaylists();   
     })
 
-    
-    
+    function likeHandler()
+    {
+        if(user){
+        addvideoToLiked(video,videosDispatch,encodedToken)
+        }
+        else{
+            navigate("/login")
+        }
+    }
+
+    function watchlaterHandler()
+    {
+        if(user){
+        addVideoToWatchlater(video,videosDispatch,encodedToken)
+        }
+        else{
+            navigate("/login")
+        }
+    }
 
     return(
         <div>
@@ -206,8 +137,8 @@ function SingleVideoPage(){
                     <div className="video-details">
                         <h2>{getSingleVideo.title}</h2>
                         <div>
-                            {liked ? <ThumbUpIcon className="like-icon" onClick={()=>deleteFromLikedHandler(video._id)}></ThumbUpIcon> : <ThumbUpOutlinedIcon className="like-icon" onClick={addvideoToLiked}></ThumbUpOutlinedIcon> }
-                            {watchlater ? <WatchLaterIcon className="watchlater-icon" onClick={()=>deleteFromWatchlaterHandler(video._id)}></WatchLaterIcon> : <WatchLaterOutlinedIcon className="watchlater-icon" onClick={addVideoToWatchlater} ></WatchLaterOutlinedIcon> }
+                            {liked ? <ThumbUpIcon className="like-icon" onClick={()=>deleteFromLikedHandler(video._id,videosDispatch,encodedToken)}></ThumbUpIcon> : <ThumbUpOutlinedIcon className="like-icon" onClick={likeHandler}></ThumbUpOutlinedIcon> }
+                            {watchlater ? <WatchLaterIcon className="watchlater-icon" onClick={()=>deleteFromWatchlaterHandler(video._id,videosDispatch,encodedToken)}></WatchLaterIcon> : <WatchLaterOutlinedIcon className="watchlater-icon" onClick={watchlaterHandler} ></WatchLaterOutlinedIcon> }
                         </div>
                         <button className="button-playlist" onClick={()=>setDisplay("block")}><PlaylistPlayOutlinedIcon></PlaylistPlayOutlinedIcon>Add to playlist</button>
                         <div className="modal" style={{display:display}}>

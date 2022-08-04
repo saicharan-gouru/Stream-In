@@ -9,7 +9,7 @@ function Videolisting(){
 
     function setStyle(name){
         if(name === currentCategory)
-        return {backgroundColor:"#f40c0c",color:"white"}
+        return {backgroundColor:"#f3652d",color:"white"}
     }
 
     return(

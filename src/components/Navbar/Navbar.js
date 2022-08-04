@@ -21,7 +21,7 @@ function Navbar(){
     return(
         <div className="nav-bar">
             <Link to="/" className="title"><h1><LiveTvIcon></LiveTvIcon> StreamIn </h1></Link>
-            {user ? <button className="button primary-red" onClick={logoutHandler} >Logout</button> : <Link to="/login"><button className="button primary-green">Login</button></Link>}
+            {user ? <button className="button primary-yellow" onClick={logoutHandler} >Logout</button> : <Link to="/login"><button className="button primary-green">Login</button></Link>}
         </div>
     )
 }

@@ -6,7 +6,7 @@ const VideosContext = createContext();
 
 function DataProvider({children}){
 
-    const [{categories,videos,filteredVideos,currentCategory},videosDispatch] = useReducer(videosReducer,{categories:[],videos:[],filteredVideos:[],currentCategory:"ALL"})
+    const [{categories,videos,filteredVideos,currentCategory,videosInLiked,videosInWatchlater},videosDispatch] = useReducer(videosReducer,{categories:[],videos:[],filteredVideos:[],currentCategory:"ALL",videosInLiked:[],videosInWatchlater:[]})
     useEffect(()=>{ 
         async function FetchData(){
             try{
@@ -24,7 +24,7 @@ function DataProvider({children}){
     );
 
     return(
-        <VideosContext.Provider value={{categories,videos,filteredVideos,videosDispatch,currentCategory}}>
+        <VideosContext.Provider value={{categories,videos,filteredVideos,videosDispatch,currentCategory,videosInLiked,videosInWatchlater}}>
             {children}
         </VideosContext.Provider>
     )

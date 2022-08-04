@@ -5,12 +5,14 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import { Default } from "../../components";
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import {deleteFromLikedHandler} from "../../services";
+import {useData} from "../../contexts";
 
 
 
 function Likespage(){
     useDocumentTitle("Stream In | Liked");
+    const {videosDispatch} = useData();
     const [videosInLiked, setVideosInLiked] = useState([])
     const encodedToken = localStorage.getItem("token")
     
@@ -23,18 +25,6 @@ function Likespage(){
             setVideosInLiked(data.data.likes)
             console.log(data.data.likes)
         } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const deleteFromLikedHandler = async (_id) => {
-        try{
-            const data = await axios.delete(`/api/user/likes/${_id}`,{
-                headers: {authorization: encodedToken}
-            })
-            setVideosInLiked(data.data.likes);
-        }
-        catch(error){
             console.log(error)
         }
     }
@@ -64,7 +54,7 @@ function Likespage(){
                         </div>
                         <Link to={`/video/${item._id}`}>Go to video</Link>
                     </div>
-                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromLikedHandler(item._id)}></DeleteIcon>
+                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromLikedHandler(item._id,videosDispatch,encodedToken)}></DeleteIcon>
                 </div>
                  )}
                 {videosInLiked.length===0 && <Default/>}

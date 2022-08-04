@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import {useDocumentTitle} from "../../customhooks";
 import { Default } from "../../components";
+import {triggerToast} from "../../services";
 
 
 function History(){
@@ -33,7 +34,8 @@ function History(){
         try{
             const data = await axios.delete("/api/user/history/all",{
                 headers: {authorization: encodedToken}
-            })
+            });
+            triggerToast("error","History cleared");
             setVideosInHistory(data.data.history);
         }
         catch(error){
@@ -45,7 +47,8 @@ function History(){
         try{
             const data = await axios.delete(`/api/user/history/${_id}`,{
                 headers: {authorization: encodedToken}
-            })
+            });
+            triggerToast("warning","Video deleted from history")
             setVideosInHistory(data.data.history);
         }
         catch(error){

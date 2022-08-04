@@ -27,13 +27,13 @@ function Login(){
             const { data } = await axios.post("/api/auth/login", { email, password });
             const { foundUser, encodedToken } = data;
             setUser(foundUser);
-            triggerToast("success","login successful")
+            triggerToast("success","Login successful")
             localStorage.setItem("token", encodedToken);
             navigate(location.state?.from?.pathname || "/", { replace: true });
           } 
           catch (error) {
             setError("Invalid username/password");
-            triggerToast("error","login failed")
+            triggerToast("error","Login failed")
             console.error(error);
           }
     }
