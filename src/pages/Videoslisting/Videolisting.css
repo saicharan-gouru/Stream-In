@@ -18,13 +18,14 @@
     text-decoration: none;
     color: var(--black);
     font-weight: bold;
-    padding: 1rem;
     cursor: pointer;
+    margin: 10px;
 }
 
 .thumbnail {
-    width: 100%;
-    height: 250px;
+    width: 90%;
+    height: 200px;
+    margin-top: 10px;
 }
 
 .avatar {
@@ -65,7 +66,8 @@
     font-weight: bold;
 }
 
-.filter-btn:hover {
+.filter-btn:hover,
+.active {
     background-color: var(--primary-color);
     color: var(--white);
 }

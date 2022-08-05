@@ -5,16 +5,20 @@ import {useDocumentTitle} from "../../customhooks";
 
 function Videolisting(){
     useDocumentTitle("Stream In | Explore")
-    const {filteredVideos,videosDispatch} = useData();    
+    const {filteredVideos,videosDispatch,currentCategory} = useData();    
+
+    function setStyle(name){
+        if(name === currentCategory)
+        return {backgroundColor:"#f3652d",color:"white"}
+    }
 
     return(
         <div>
-            <h1>Videos</h1>
             <div className="filters">
-                <button className="filter-btn" onClick={() => videosDispatch({type:"FILTER_ALL"})}>All</button>
-                <button className="filter-btn" onClick={() => videosDispatch({type:"FILTER",payload:"Tollywood"})}>Tollywood</button>
-                <button className="filter-btn" onClick={() => videosDispatch({type:"FILTER",payload:"Bollywood"})}>Bollywood</button>
-                <button className="filter-btn" onClick={() => videosDispatch({type:"FILTER",payload:"Cartoon"})}>Cartoon</button>
+                <button className="filter-btn" style={setStyle("ALL")}  onClick={() => videosDispatch({type:"FILTER_ALL"})}>All</button>
+                <button className="filter-btn" style={setStyle("Tollywood")} onClick={() => videosDispatch({type:"FILTER",payload:"Tollywood"})}>Tollywood</button>
+                <button className="filter-btn" style={setStyle("Bollywood")} onClick={() => videosDispatch({type:"FILTER",payload:"Bollywood"})}>Bollywood</button>
+                <button className="filter-btn" style={setStyle("Cartoon")} onClick={() => videosDispatch({type:"FILTER",payload:"Cartoon"})}>Cartoon</button>
             </div>
             <div className="videos-container">
                 {filteredVideos.map( 
