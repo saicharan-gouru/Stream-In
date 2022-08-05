@@ -5,6 +5,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Default} from "../../components";
+import {triggerToast} from "../../services";
 
 function Playlistpage(){
     useDocumentTitle("Stream In | Playlists");
@@ -27,7 +28,8 @@ function Playlistpage(){
         try{
             const data = await axios.delete(`/api/user/playlists/${_id}`, {
                 headers: { authorization: encodedToken }
-            })
+            });
+            triggerToast("warning","Playlist deleted")
             setPlaylists(data.data.playlists)
         } catch(error){
             console.log(error)
@@ -41,17 +43,19 @@ function Playlistpage(){
 
     return(
         <div>
-            <h1>Playlists</h1>
+        <h1>Playlists</h1>
         <div className="playlists-container">
             {playlists.length === 0 && <Default />}
+
             {playlists.map(item => 
                 <div>
                 <Link className="playlist" to={`/playlists/${item._id}`}>
                     {item.title}
                 </Link>
-                <DeleteIcon onClick={()=>deletePlaylist(item._id)}></DeleteIcon>
+                <DeleteIcon className="icon-playlist-delete" onClick={()=>deletePlaylist(item._id)}></DeleteIcon>
                 </div>
             )}
+          
         </div>
         </div>
     )

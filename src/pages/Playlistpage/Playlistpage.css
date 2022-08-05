@@ -1,5 +1,5 @@
 .playlist {
-    padding: 0.5rem;
+    padding: 2rem;
     margin: 1rem;
     border: 1px solid var(--black);
     border-radius: 1rem;
@@ -8,9 +8,16 @@
 }
 
 .playlists-container {
+    margin: 2rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     gap: 1.5rem;
+}
+
+.icon-playlist-delete {
+    cursor: pointer;
+    border: 1px solid var(--black);
+    border-radius: 50%;
 }

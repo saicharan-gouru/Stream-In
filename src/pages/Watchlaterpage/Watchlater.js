@@ -5,9 +5,11 @@ import {useEffect,useState} from "react";
 import {Link} from "react-router-dom";
 import {Default} from "../../components";
 import DeleteIcon from '@mui/icons-material/Delete';
+import {useData} from "../../contexts";
+import {deleteFromWatchlaterHandler} from "../../services";
 
 function Watchlater(){
-
+    const {videosDispatch} = useData();
     useDocumentTitle("Stream In | Watchlater");
     const [videosInWatchlater, setVideosInWatchlater] = useState([])
     const encodedToken = localStorage.getItem("token")
@@ -25,17 +27,7 @@ function Watchlater(){
         }
     }
 
-    const deleteFromWatchlaterHandler = async (_id) => {
-        try{
-            const data = await axios.delete(`/api/user/watchlater/${_id}`,{
-                headers: {authorization: encodedToken}
-            })
-            setVideosInWatchlater(data.data.watchlater);
-        }
-        catch(error){
-            console.log(error)
-        }
-    }
+
 
 
 
@@ -64,7 +56,7 @@ function Watchlater(){
                         </div>
                         <Link to={`/video/${item._id}`}>Go to video</Link>
                     </div>
-                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromWatchlaterHandler(item._id)}></DeleteIcon>
+                    <DeleteIcon className="delete-icon" onClick={()=>deleteFromWatchlaterHandler(item._id,videosDispatch,encodedToken)}></DeleteIcon>
                 </div>
                  )}
                 {videosInWatchlater.length===0 && <Default/>}

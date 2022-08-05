@@ -3,6 +3,8 @@ import "./SinglePlaylistpage.css";
 import axios from "axios";
 import {useParams,Link} from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
+import {Default} from "../../components";
+import {triggerToast} from "../../services";
 
 
 function SinglePlaylistpage(){
@@ -18,7 +20,6 @@ function SinglePlaylistpage(){
                 headers: { authorization: encodedToken }
             })
             setVideosInPlaylist(data.data.playlist.videos)
-            
         } catch (error) {
             console.log(error)
         }
@@ -28,7 +29,8 @@ function SinglePlaylistpage(){
         try{
             const data = await axios.delete(`/api/user/playlists/${_id}/${_vid}`, {
                 headers: { authorization: encodedToken }
-            })
+            });
+            triggerToast("warning","Video deleted from the current playlist")
             setVideosInPlaylist(data.data.playlist.videos)
         } catch(error){
             console.log(error)
@@ -47,6 +49,7 @@ function SinglePlaylistpage(){
         <div>
             <h1>Single playlist page</h1>
             <div className="videos-container">
+            {videosInPlaylist.length === 0 && <Default />}
             { videosInPlaylist.map(item => 
                 <div className="history-video-card" key={item._id}>
                     <div className="history-video-card-container-1">

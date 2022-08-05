@@ -59,12 +59,18 @@ function SingleVideoPage(){
     const createPlaylist = async () => {
         if(user)
         {
+        if(playlists.filter(item => item.title === title).length === 0)
+        {
         try {
             await axios.post("/api/user/playlists", {playlist:{title}},
                 { headers: { authorization: encodedToken } })
             setTitle("")
         } catch (error) {
             console.log(error)
+        }
+        }
+        else{
+            triggerToast("warning","playlist already exist")
         }
         }
         else{
@@ -86,10 +92,12 @@ function SingleVideoPage(){
     const addVideoToPlaylist = async (_id) => {
         try {
             const data = await axios.post(`/api/user/playlists/${_id}`, { video },
-                { headers: { authorization: encodedToken } })
+                { headers: { authorization: encodedToken } });
+                triggerToast("success","Video added to playlist")
             console.log(data.data);
         } catch (error) {
-            console.log(error)
+            if(error.message.indexOf("409") !== -1)
+            triggerToast("warning","The video is already in your playlist")
         }
         
     }
@@ -144,10 +152,10 @@ function SingleVideoPage(){
                         <div className="modal" style={{display:display}}>
                             <div className="modal-content">
                                 <span onClick={()=>setDisplay("none")} class="close">&times;</span>
-                                <input type="text" onChange={(e)=>setTitle(e.target.value)} value={title}/>
-                                <button onClick={createPlaylist}>create</button>
-                                <div>
-                                    {playlists.map(item => <><span>{item.title}</span> <button onClick={()=>{triggerToast("success","Video added to playlist");addVideoToPlaylist(item._id)}}>Add</button></>)}
+                                <input className="playlist-title" type="text" onChange={(e)=>setTitle(e.target.value)} value={title}/>
+                                <button className="playlist-create-btn" onClick={createPlaylist}>create</button>
+                                <div className="existing-playlists">
+                                    {playlists.map(item => <><span>{item.title}</span> <button className="playlist-add-btn" onClick={()=>addVideoToPlaylist(item._id)}>Add</button></>)}
                                 </div>
                             </div>
                         </div>

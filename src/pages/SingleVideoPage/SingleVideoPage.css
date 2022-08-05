@@ -36,6 +36,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
+    border-radius: 10%;
 }
 
 .close {
@@ -46,7 +47,9 @@
     cursor: pointer;
 }
 
-.button-playlist {
+.button-playlist,
+.playlist-create-btn,
+.playlist-add-btn {
     cursor: pointer;
     margin: 0rem 1rem 1rem 0rem;
     border-radius: 1rem;
@@ -55,4 +58,13 @@
     color: var(--white);
     padding: 0.5rem;
     font-weight: bold;
+}
+
+.playlist-title {
+    margin: 0rem 1rem 1rem 0rem;
+}
+
+.existing-playlists {
+    display: flex;
+    flex-direction: column;
 }
