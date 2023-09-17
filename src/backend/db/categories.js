@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const categories = [{
         _id: uuid(),
         categoryName: "Tollywood",
-        img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.tXtLRpOD8jtwcDtVdYe1PAHaEU%26pid%3DApi&f=1"
+        img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.TCuOhzAaUoWYjlozcWWw7gHaEK%26pid%3DApi&f=1&ipt=2bc1ceaeb4b8fa6019435795b5c0ebb6835349f846c19d6b745110d432975a50&ipo=images"
     },
     {
         _id: uuid(),
